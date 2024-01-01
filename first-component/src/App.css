@@ -39,9 +39,24 @@
 
 .read-the-docs {
   color: #888;
-}
+} 
 
 nav{
   background-color: #888;
+
+  /*display:flex;*/
+}
+
+nav ul {
   display: flex;
+  
+}
+
+
+nav li{
+  margin: 1rem;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  list-style-type: none;
 }
