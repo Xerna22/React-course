@@ -1,35 +1,76 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {
+  useState,
+  useRef
+} from "react"; 
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+function App() { 
+  const inputRef = useRef(null); 
+  const resultRef = useRef(null); 
+  const [result, setResult] = useState(0); 
+ 
+  function plus(e) { 
+    e.preventDefault(); 
+    setResult((result) => result + Number(inputRef.current.value)); 
+  }; 
+ 
+  function minus(e) { 
+  	// Add the code for the minus function 
+    e.preventDefault(); 
+    setResult((result) => result - Number(inputRef.current.value));
+  };
+ 
+  function times(e) { 
+    // Add the code for the plus function 
+    e.preventDefault(); 
+    setResult((result) => result * Number(inputRef.current.value));
+  }; 
+ 
+  function divide(e) { 
+    // Add the code for the divide function
+    e.preventDefault(); 
+    setResult((result) => result / Number(inputRef.current.value));
+  };
+ 
+  function resetInput(e) { 
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
-
-export default App
+  }; 
+ 
+  function resetResult(e) { 
+  	// Add the code for the resetResult function
+  
+  }; 
+ 
+  return ( 
+    <div className="App"> 
+      <div> 
+        <h1>Simplest Working Calculator</h1> 
+      </div> 
+      <form> 
+        <p ref={resultRef}> 
+          {/* add the value of the current total */} 
+          {result}
+        </p> 
+        <input
+          pattern="[0-9]" 
+          ref={inputRef} 
+          type="number" 
+          placeholder="Type a number" 
+        /> 
+        <button onClick={plus}>add</button> 
+        <button>subtract</button>
+        <button>multiply</button>
+        <button>divide</button>
+        <button>reset input</button>
+        <button>reset result</button>
+        {/* Add the subtract button */} 
+        {/* Add the multiply button */} 
+        {/* Add the divide button */} 
+        {/* Add the resetInput button */} 
+        {/* Add the resetResult button */} 
+      </form> 
+    </div> 
+  ); 
+} 
+ 
+export default App; 
