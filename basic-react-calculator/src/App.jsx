@@ -33,12 +33,14 @@ function App() {
   };
  
   function resetInput(e) { 
-
+    e.preventDefault()
+    inputRef.current.value = ''
   }; 
  
   function resetResult(e) { 
   	// Add the code for the resetResult function
-  
+    e.preventDefault();
+    setResult(0)
   }; 
  
   return ( 
@@ -58,11 +60,11 @@ function App() {
           placeholder="Type a number" 
         /> 
         <button onClick={plus}>add</button> 
-        <button>subtract</button>
-        <button>multiply</button>
-        <button>divide</button>
-        <button>reset input</button>
-        <button>reset result</button>
+        <button onClick={minus}>subtract</button>
+        <button onClick={times}>multiply</button>
+        <button onClick={divide}>divide</button>
+        <button onClick={resetInput}>reset input</button>
+        <button onClick={resetResult}>reset result</button>
         {/* Add the subtract button */} 
         {/* Add the multiply button */} 
         {/* Add the divide button */} 
