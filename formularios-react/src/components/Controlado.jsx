@@ -9,17 +9,20 @@ const Contrlado = () => {
         priority: true,
     })
 
+    const {title, description, state, priority} = todo
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(todo.title, todo.description, todo.state)
+        console.log(title, description, state)
     };
 
     const handleChange = e => {
-        console.log(e.target.value)
-        console.log(e.target.name)
+
+        const {name, type, checked, value} = e.target
+
         setTodo({
             ...todo,
-            [e.target.name]: e.target.value,
+            [name]: type === 'checkbox' ? checked : value,
         })
     }
 
@@ -30,32 +33,29 @@ const Contrlado = () => {
                 placeholder="Ingrese ToDo"
                 className="form-control mb-2"
                 name="title"
-                value={todo.title}
+                value={title}
                 onChange={handleChange}
             />
             <textarea
                 className="form-control mb-2"
                 placeholder="Ingrese descipción"
                 name="description"
-                value={todo.description}
+                value={description}
                 onChange={handleChange}
             />
 
             <div className="form-check">
-                <input type="checkbox" 
-                name="priority" 
-                className="form-check-input" 
-                id="inputCheck" 
-                checked={todo.priority}
-                onChange={(e) => setTodo({
-                    ...todo,
-                    priority: e.target.checked
-                })} />
+                <input type="checkbox"
+                    name="priority"
+                    className="form-check-input"
+                    id="inputCheck"
+                    checked={priority}
+                    onChange={handleChange} />
                 <label htmlFor="inputCheck">Dar prioridad</label>
             </div>
 
             <select className="form-select mb-2" name="state"
-                value={todo.state} onChange={handleChange}>
+                value={state} onChange={handleChange}>
                 <option value="pendiente">Pendiente</option>
                 <option value="completado">Completado</option>
             </select>
