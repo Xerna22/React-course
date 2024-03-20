@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Contrlado = () => {
+const Formulario = () => {
     //desestructuracion usando objetos
     const [todo, setTodo] = useState({
         title: 'Todo #01',
@@ -66,4 +66,4 @@ const Contrlado = () => {
     );
 };
 
-export default Contrlado;
+export default Formulario;
