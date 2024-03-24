@@ -1,6 +1,7 @@
 import { useState } from "react";
+import Swal from "sweetalert2";
 
-const Formulario = () => {
+const Formulario = ( {addTodo}) => {
     //desestructuracion usando objetos
     const [todo, setTodo] = useState({
         title: 'Todo #01',
@@ -13,8 +14,30 @@ const Formulario = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(title, description, state)
+        console.log(title, description, state);
+        if (!title.trim() || !description.trim()) {
+            console.log("Datos incompletos");
+            Swal.fire({
+                title: "Error!",
+                text: "Título y descripción son obligatorios",
+                icon: "error",
+            });
+            return;
+        }
+        addTodo({
+            id: Date.now(),
+            ...todo,
+            state: state === "completado",
+        });
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Tarea agregada con éxito",
+            showConfirmButton: false,
+            timer: 1500,
+        });
     };
+    
 
     const handleChange = e => {
 
@@ -60,7 +83,7 @@ const Formulario = () => {
                 <option value="completado">Completado</option>
             </select>
             <button type="submit" className="btn btn-primary">
-                Procesar
+                Agregar tarea
             </button>
         </form>
     );

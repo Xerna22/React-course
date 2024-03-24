@@ -30,12 +30,19 @@ const initialStateTodo = [
 
 const App = () => {
 
-  const [todos, setTodo] = useState(initialStateTodo)
+  const [todos, setTodos] = useState(initialStateTodo) //setTodos actualiza todos los ToDos o tareas
+
+  //Esta función toma el array de To-Dos, hace una copia de este y agrega el nuevo to-do
+  const addTodo = todo =>{
+    //el primer parametro [...todo, ] hace una copia de todos los To-Do
+    //el segundo parametro [ , todo] es para agregar un nuevo To-Do
+    setTodos([...todos, todo])
+  }
 
   return (
     <div className="container mb-2">
       <h1 className="my-5">Formularios</h1>
-      <Formulario/>
+      <Formulario addTodo={addTodo} />
       <Todos todos={todos}/>
     </div>)
 }
