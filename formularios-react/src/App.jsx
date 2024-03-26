@@ -39,11 +39,35 @@ const App = () => {
     setTodos([...todos, todo])
   }
 
+  // Esta funcion obtiene todos los To-Dos del arreglo a exepción del que coincide con el ID que se le pasa como parametro
+  const deleteTodo = id =>{
+    const newArray = todos.filter(todo => todo.id !== id) 
+    setTodos(newArray)
+  }
+
+  //Esta función cambia el estado booleano de una tarea
+  const updateTodo = id => {
+    const newArray = todos.map(todo => {
+      if(todo.id === id){
+        todo.state = !todo.state
+      }
+      return todo
+    })
+    setTodos(newArray)
+  }
+
+  //
+  const orderTodo = (arrayTodo) =>{
+    return arrayTodo.sort((a,b) =>{
+      if(a.priority === b.priority)
+    })
+  }
+
   return (
     <div className="container mb-2">
       <h1 className="my-5">Formularios</h1>
       <Formulario addTodo={addTodo} />
-      <Todos todos={todos}/>
+      <Todos todos={todos} deleteTodo={deleteTodo} updateTodo={updateTodo}/>
     </div>)
 }
 
