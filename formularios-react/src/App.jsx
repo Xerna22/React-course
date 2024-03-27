@@ -1,36 +1,16 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Formulario from "./components/Formulario"
 import Todos from "./components/Todos"
 
-const initialStateTodo = [
-  {
-    id: 1,
-    title: "Todo #1",
-    description: "Description 1" ,
-    state: true,
-    priority: true
-  },
-
-  {
-    id: 2,
-    title: "Todo #2",
-    description: "Description 2" ,
-    state: false,
-    priority: false
-  },
-
-  {
-    id: 3,
-    title: "Todo #3",
-    description: "Description 3" ,
-    state: false,
-    priority: true
-  }
-]
+const initialStateTodo = JSON.parse(localStorage.getItem('todos')) || []
 
 const App = () => {
 
   const [todos, setTodos] = useState(initialStateTodo) //setTodos actualiza todos los ToDos o tareas
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos])
 
   //Esta función toma el array de To-Dos, hace una copia de este y agrega el nuevo to-do
   const addTodo = todo =>{
@@ -56,10 +36,12 @@ const App = () => {
     setTodos(newArray)
   }
 
-  //
+  //Coloca primero las tareas con mayor prioridad
   const orderTodo = (arrayTodo) =>{
     return arrayTodo.sort((a,b) =>{
-      if(a.priority === b.priority)
+      if(a.priority === b.priority) return 0
+      if(a.priority) return -1
+      if(!a.priority) return 1
     })
   }
 
@@ -67,7 +49,7 @@ const App = () => {
     <div className="container mb-2">
       <h1 className="my-5">Formularios</h1>
       <Formulario addTodo={addTodo} />
-      <Todos todos={todos} deleteTodo={deleteTodo} updateTodo={updateTodo}/>
+      <Todos todos={orderTodo(todos)} deleteTodo={deleteTodo} updateTodo={updateTodo}/>
     </div>)
 }
 
