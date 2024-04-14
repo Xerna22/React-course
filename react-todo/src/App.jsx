@@ -1,6 +1,6 @@
 const App = () => {
   return (
-    <div className="bg-[url('src/assets/images/bg-mobile-light.jpg')] bg-no-repeat bg-contain">
+    <div className="bg-[url('src/assets/images/bg-mobile-light.jpg')] bg-no-repeat bg-contain bg-gray-300">
       <header className="container mx-auto px-4 pt-8">
         <div className="flex justify-between">
           <h1 className="text-3xl font-semibold tracking-[0.5em] uppercase text-white ">
@@ -8,8 +8,17 @@ const App = () => {
           </h1>
           <button>🌙</button>
         </div>
-        <form className="bg-white rounded-md overflow-hidden" action="">
-          <input type="text" placeholder="Create a new todo..." />
+        <form
+          className="flex items-center gap-4 rounded-md 
+        overflow-hidden bg-white py-3 px-4 mt-5 mb-3"
+          action=""
+        >
+          <span className="inline-block h-5 w-5 rounded-full border-2"></span>
+          <input
+            type="text"
+            placeholder="Create a new todo..."
+            className="w-full text-gray-400 outline-none"
+          />
         </form>
       </header>
       <main className="container mx-auto px-4">
