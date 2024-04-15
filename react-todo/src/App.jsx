@@ -1,3 +1,5 @@
+import CrossIcon from "./components/icons/CrossIcon";
+
 const App = () => {
   return (
     <div className="bg-[url('src/assets/images/bg-mobile-light.jpg')] bg-no-repeat bg-contain bg-gray-300">
@@ -21,30 +23,39 @@ const App = () => {
           />
         </form>
       </header>
-      <main className="container mx-auto px-4">
-        <article className="flex justify-between">
-          <button>⭕</button>
-          <p>Compleatat curso de React</p>
-          <button>✖️</button>
-        </article>
-        <article className="flex justify-between">
-          <button>⭕</button>
-          <p>Compleatat curso de React</p>
-          <button>✖️</button>
-        </article>
-        <article className="flex justify-between">
-          <button>⭕</button>
-          <p>Compleatat curso de React</p>
-          <button>✖️</button>
-        </article>
+      <main className="container mx-auto px-4 ">
+        <div className="rounded-md bg-white ">
+          <article className="flex gap-4 py-4 border-b border-b-gray-400 px-4">
+            <button className="inline-block h-5 w-5 rounded-full border-2"></button>
+            <p className="text-gray-600 grow">Compleatat curso de React</p>
+            <button>
+              <CrossIcon />
+            </button>
+          </article>
 
-        <section>
-          <span>5 items left</span>
-          <button>Clear Completed</button>
-        </section>
+          <article className="flex gap-4 py-4 border-b border-b-gray-400 px-4">
+            <button className="inline-block h-5 w-5 rounded-full border-2"></button>
+            <p className="text-gray-600 grow">Compleatat curso de React</p>
+            <button>
+              <CrossIcon />
+            </button>
+          </article>
+          <article className="flex gap-4 py-4 border-b border-b-gray-400 px-4">
+            <button className="inline-block h-5 w-5 rounded-full border-2"></button>
+            <p className="text-gray-600 grow">Compleatat curso de React</p>
+            <button>
+              <CrossIcon />
+            </button>
+          </article>
+
+          <section className="flex justify-between p-4">
+            <span className="text-gray-400">5 items left</span>
+            <button className="text-gray-400">Clear Completed</button>
+          </section>
+        </div>
       </main>
 
-      <section className="container mx-auto px-4">
+      <section className="container mx-auto py-4">
         <button>All</button>
         <button>Active</button>
         <button>Completed</button>
