@@ -1,6 +1,8 @@
 import Header from "./components/Header";
+import TodoComputed from "./components/TodoComputed";
 import TodoCreate from "./components/TodoCreate";
-import CrossIcon from "./components/icons/CrossIcon";
+import TodoFilter from "./components/TodoFilter";
+import TodoList from "./components/TodoList";
 
 const App = () => {
   return (
@@ -8,50 +10,14 @@ const App = () => {
       <Header />
 
       <main className="container mx-auto px-4 ">
-        {/*TodoCreate*/}
         <TodoCreate />
 
-        {/*TodoList (TodoItem) TodoUpdate y TodoDelete */}
-        <div className=" rounded-t-md bg-white ">
-          <article className="flex gap-4 py-4 border-b border-b-gray-400 px-4">
-            <button className="inline-block h-5 w-5 rounded-full border-2"></button>
-            <p className="text-gray-600 grow">Compleatat curso de React</p>
-            <button>
-              <CrossIcon />
-            </button>
-          </article>
+        <TodoList />
 
-          <article className="flex gap-4 py-4 border-b border-b-gray-400 px-4">
-            <button className="inline-block h-5 w-5 rounded-full border-2"></button>
-            <p className="text-gray-600 grow">Compleatat curso de React</p>
-            <button>
-              <CrossIcon />
-            </button>
-          </article>
-          <article className="flex gap-4 py-4 border-b border-b-gray-400 px-4">
-            <button className="inline-block h-5 w-5 rounded-full border-2"></button>
-            <p className="text-gray-600 grow">Compleatat curso de React</p>
-            <button>
-              <CrossIcon />
-            </button>
-          </article>
-        </div>
-
-        {/*TodoComputed*/}
-        <section className="flex justify-between p-4 bg-white rounded-b-md">
-          <span className="text-gray-400">5 items left</span>
-          <button className="text-gray-400">Clear Completed</button>
-        </section>
+        <TodoComputed />
       </main>
 
-      {/* TodoFilter */}
-      <section className="container mx-auto mt-8 px-4">
-        <div className="flex justify-center gap-4 rounded-md bg-white p-4">
-          <button className="text-blue-600 font-semibold">All</button>
-          <button className="hover:text-blue-600">Active</button>
-          <button className="hover:text-blue-600">Completed</button>
-        </div>
-      </section>
+      <TodoFilter />
 
       <footer className="text-center pt-8">
         Drag and drop to reorder list
